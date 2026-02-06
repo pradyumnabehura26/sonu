@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Don't click otherwise your heart got stolen ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI;}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    overflow:hidden;
+}
+
+/* Floating hearts */
+.heart{
+    position:absolute;
+    color:#fff;
+    font-size:20px;
+    animation:float 8s linear infinite;
+    opacity:0.6;
+}
+@keyframes float{
+    0%{transform:translateY(100vh);opacity:0;}
+    100%{transform:translateY(-10vh);opacity:1;}
+}
+
+/* Glass card */
+.card{
+    width:90%;
+    max-width:800px;
+    padding:30px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    box-shadow:0 0 40px rgba(0,0,0,0.3);
+    text-align:center;
+    color:#fff;
+}
+
+h1{
+    font-size:45px;
+    margin-bottom:15px;
+    text-shadow:0 0 20px #fff;
+}
+
+img{
+    width:250px;
+    border-radius:20px;
+    margin:20px 0;
+    box-shadow:0 0 25px #fff;
+    transition:0.5s;
+}
+img:hover{
+    transform:scale(1.08);
+}
+
+#text{
+    font-size:20px;
+    margin-top:15px;
+    min-height:120px;
+    line-height:1.6;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    background:#fff;
+    color:#ff4e50;
+    transition:0.3s;
+}
+button:hover{
+    transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <h1>Hi Sonu ❤️</h1>
+    <img src="sonu.jpg" alt="Sonu">
+    
+    <div id="text"></div>
+
+    <button onclick="startLove()">Click Here ❤️</button>
+</div>
+
+<script>
+// Floating hearts
+for(let i=0;i<40;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.style.left=Math.random()*100+"%";
+    h.style.animationDuration=(5+Math.random()*5)+"s";
+    h.innerHTML="❤️";
+    document.body.appendChild(h);
+}
+
+// Typewriter text
+const message = `You are the most beautiful part of my life.
+
+Your smile is my peace.
+Your voice is my comfort.
+Your love is my strength.
+
+Aap ki nazron ne samjha,
+pyaar ke kabil mujhe…
+
+I am the luckiest person because I have you ❤️`;
+
+let i=0;
+function typeWriter(){
+    if(i<message.length){
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter,40);
+    }
+}
+
+function startLove(){
+    document.getElementById("bgMusic").play(); // music starts on click
+    typeWriter();
+}
+</script>
+
+</body>
+</html>
